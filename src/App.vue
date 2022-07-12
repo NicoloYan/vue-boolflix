@@ -1,28 +1,38 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HeaderComponent @ricercaFilm="funzioneRicercaFilm"/>
+    <MainComponent :array-films="arrayFilms"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+// import HelloWorld from './components/HelloWorld.vue'
+import HeaderComponent from './components/HeaderComponent.vue'
+import MainComponent from './components/MainComponent.vue'
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    HeaderComponent,
+    MainComponent
+  },
+  data() {
+    return {
+      arrayFilms: null,
+    }
+  },
+  methods: {
+    funzioneRicercaFilm(arrayFilms) {
+      this.arrayFilms = arrayFilms;
+    },
+  },
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+// RESET
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 </style>
