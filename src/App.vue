@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <HeaderComponent @ricercaFilm="funzioneRicercaFilm"/>
-    <MainComponent :array-films="arrayFilms"/>
+    <HeaderComponent @ricercaFilm="funzioneRicercaFilm" @ricercaSerie="funzioneRicercaSerie"/>
+    <MainComponent :array-films="arrayFilms" :array-series="arraySeries"/>
   </div>
 </template>
 
@@ -18,11 +18,15 @@ export default {
   data() {
     return {
       arrayFilms: null,
+      arraySeries: null,
     }
   },
   methods: {
     funzioneRicercaFilm(arrayFilms) {
       this.arrayFilms = arrayFilms;
+    },
+    funzioneRicercaSerie(arraySeries) {
+      this.arraySeries = arraySeries;
     },
   },
 }
