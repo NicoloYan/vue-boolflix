@@ -9,6 +9,12 @@
             :key="element.id"
             :film-data="element"
             />
+            <h3 class="series">Series</h3>
+            <SeriesCard
+            v-for="element in arraySeries"
+            :key="element.id"
+            :serie-data="element"
+            />
         </div>
         </div>
     </main>
@@ -16,17 +22,22 @@
 
 <script>
 import MovieCard from "./MovieCard.vue";
+import SeriesCard from "./SeriesCard.vue";
 export default {
     name: 'MainComponent',
     components: {
-        MovieCard
+        MovieCard,
+        SeriesCard
     },
     props: {
         arrayFilms: Array,
+        arraySeries: Array,
     },
 }
 </script>
 
 <style lang="scss" scoped>
-
+.series {
+    background-color: blue;
+}
 </style>

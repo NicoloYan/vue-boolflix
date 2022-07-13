@@ -8,7 +8,7 @@
         >
         {{ filmData.original_title }}
         </h3>
-        <lang-flag :iso="filmData.original_language" squared="false" />
+        <lang-flag :iso="filmData.original_language" :squared="false" />
         <h4>{{ filmData.vote_average }}</h4>
     </div>
 </template>
