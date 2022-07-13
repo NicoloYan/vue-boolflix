@@ -38,6 +38,7 @@ export default {
 
 <style lang="scss" scoped>
 .series {
+    // TEST
     background-color: blue;
 }
 </style>
