@@ -2,14 +2,16 @@
     <main>
         <div v-if="arrayFilms == null">Cerca un Film</div>
         <div v-else>
-        <h3>films</h3>
-        <div>
+        <h3>Films</h3>
+        <div class="cards_container">
             <MovieCard
             v-for="element in arrayFilms"
             :key="element.id"
             :film-data="element"
             />
-            <h3 class="series">Series</h3>
+        </div>    
+        <h3 class="series">Series</h3>
+        <div class="cards_container">
             <SeriesCard
             v-for="element in arraySeries"
             :key="element.id"
@@ -37,8 +39,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.series {
-    // TEST
-    background-color: blue;
+main {
+    background-color: #141414;
+}
+h3 {
+    color: white;
+    text-align: center;
+    padding: 20px 0;
 }
 </style>

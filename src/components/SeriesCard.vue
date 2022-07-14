@@ -1,26 +1,40 @@
 <template>
-  <div>
-    <img
-      v-show="serieData.poster_path != null"
-      :src="'http://image.tmdb.org/t/p/w342/' + serieData.poster_path"
-      :alt="serieData.title"
-    />
-    <h2>{{ serieData.name }}</h2>
-    <h3
-      v-show="
-        serieData.name.toLowerCase() != serieData.original_name.toLowerCase()
-      "
-    >
-      {{ serieData.original_name }}
-    </h3>
-    <lang-flag
-      :iso="serieData.original_language"
-      :squared="false"
-    />
-    <h4>{{ serieData.vote_average }}</h4>
-    <div>
-      <div v-for="element in fullArrayStars()" :key="element">
-        &starf;
+  <div class="card">
+    <div v-if="textVisibility === false">
+            <div v-if="serieData.poster_path != null">
+                <img
+                @mouseenter="textVisibility = true"
+                :src="'http://image.tmdb.org/t/p/w342/' + serieData.poster_path"
+                :alt="serieData.title"
+                >
+            </div>
+            <div v-else>
+                <img 
+                @mouseenter="textVisibility = true"
+                src="https://www.electiondataservices.com/wp-content/uploads/2014/10/sorry-image-not-available.jpg"
+                alt="placeholder">
+            </div>
+        </div>
+    <div class="info_container" v-else @mouseleave="textVisibility = false">
+      <h3>Titolo: {{ serieData.name }}</h3>
+      <h4
+        v-show="
+          serieData.name.toLowerCase() != serieData.original_name.toLowerCase()
+        "
+      >
+      Titolo originale: {{ serieData.original_name }}
+      </h4>
+      <div>
+        Lingua <lang-flag
+        :iso="serieData.original_language"
+        :squared="false"
+      />
+      </div>
+      <h5>Overview:{{ serieData.overview }}</h5>
+      <div class="star_container">
+        <div class="star" v-for="element in fullArrayStars()" :key="element">
+          &starf;
+        </div>
       </div>
     </div>
   </div>
@@ -32,6 +46,7 @@ export default {
   name: "MovieCard",
   data() {
     return {
+      textVisibility: false,
       starf: "star",
       arrayStars: [],
       stars: Math.floor(this.serieData.vote_average / 2),
